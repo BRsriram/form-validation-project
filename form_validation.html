@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>form-validation</title>
+     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+     <style>
+          *{
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+          }
+          body{
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               width: 100vw;
+               background-color: burlywood;
+          }
+          .container{
+               height: 80vh;
+               width: 30vw;
+               border: 1px solid white;
+               background-color: white;
+               border-radius: 10px;
+          }
+          input{
+               width:80% ;
+               outline: none;
+               padding: 3px;
+               border: #aaa 2px solid;
+               border-radius: 5px;
+               position: relative;
+               
+          }
+          .btn{
+               width: 80%;
+          }
+          label{
+               font-size: 1.2em;
+               font-family:fantasy;
+               color: black;
+               text-transform: capitalize;
+          }
+          .err error{
+               color:red;
+              
+          }
+          .err success{
+               color:green
+          }
+          input:focus{
+               outline:auto;
+               border: none;
+               
+          }
+          h1{
+               font-weight: 500;
+               font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+               color: darkred;
+          }
+          .success{
+               border: 2px green solid;
+
+          }
+          .error{
+               border: 2px red solid;
+               
+               
+          }
+          .errs{
+               width: 20px;
+               height: 20px;
+               background-color: red;
+               position: absolute;
+               right: 42%;
+               display: inline-block;
+               top:24.3%;
+               border-radius: 50%;
+               
+              
+               visibility: hidden;
+               padding: -3px;
+          }
+         
+     </style>
+</head>
+<body>
+     <form action="#" id="form" autocomplete="off" >
+     <div class="container container-fluid ">
+          <h1 class="text-uppercase text-center my-1">register</h1>
+          <div class="row   ms-5 my-1" >
+               <div class="col ">
+                    <label for="user" class="d-block text-capitalize " >username*</label>
+                    <input type="text" name="" id="user" >
+                    <div class="errs symbol ">x</div>
+                    <div class="err"></div>
+               </div>
+          </div>
+          <div class="row ms-5 my-1">
+               <div class="col" >
+                    <label for="mail" class="d-block">Email</label>
+                    <input type="email" name="" id="mail" >
+                    <div class="err"></div>
+               </div>
+          </div> 
+          <div class="row  ms-5 my-1">
+               <div class="col">
+                    <label for="psd" class="d-block">Password</label>
+                    <input type="password" name="" id="psd" >
+                    <div class="err"></div>
+               </div>
+          </div>
+          <div class="row  ms-5 my-1">
+               <div class="col">
+                    <label for="cfpsd" class="d-block">Confirm password</label>
+                    <input type="password" name="" id="cfpsd">
+                    <div class="err"></div>
+               </div>
+          </div>
+          <div class="row my-md-2 my-lg-4 ms-5">
+               <div class="col">
+                    <button class="btn btn-danger " id="btn" type="submit">submit</button>
+               </div>
+          </div>
+
+     </div>
+    </form>
+     <script>
+     
+     //    form.addEventListener("submit",e=>{
+     //    e.preventDefault() ; 
+
+     //      checking([username,mailid,password,confpass]);
+     //    })
+     //    function checking(inputs){
+     //     let p1= password.value;
+     //     let p2 = confpass.value;
+     //      inputs.forEach((element,index) => { 
+     //           if(element.value==''){    
+     //               err[index].textContent="invalid";
+     //                element.className="error";
+     //                err[index].style.color="red"    
+     //           }
+     //           else if(element.value!='' && p1==p2){
+     //                err[index].textContent="verified";
+     //                err[index].style.color="green"
+     //                element.className="success"; 
+     //           }
+     //           else if(p1!=p2 && element.value!='' ){
+     //                err[3].textContent="* password wrong";
+     //                confpass.className="error";
+     //                username.className="success";
+     //                mailid.className="success";
+     //                password.className="success"
+     //                err[3].style.color="red";
+     //                err[0].style.color="green";
+     //                err[1].style.color="green";
+     //                err[2].style.color="green";
+     //           }   
+     //           else if(p1!=p2 && element.value=='' ){
+     //                err[3].textContent="password wrong";
+     //                confpass.className="success";
+     //                username.className="error";
+     //                mailid.className="error";
+     //                password.className="success"
+     //                err[3].style.color="green";
+     //                err[0].style.color="red";
+     //                err[1].style.color="red";
+     //                err[2].style.color="green";
+     //           }  
+               // else if(p1!=p2 && element.value=='' ){
+               //      err[3].textContent="password wrong";
+               //      confpass.className="sucess";
+               //      username.className="error";
+               //      mailid.className="error";
+               //      password.className="success"
+               //      err[3].style.color="green";
+               //      err[0].style.color="green";
+               //      err[1].style.color="green";
+               //      err[2].style.color="green";
+               // }    
+          //      })
+          // }
+          let button =  document.getElementById('btn');
+        let  username = document.getElementById('user');
+        let  mailid = document.getElementById('mail');
+        let  password = document.getElementById('psd');
+        let  confpass = document.getElementById('cfpsd');
+        var err = document.getElementsByClassName('err');
+        let symbol = document.querySelector('.errs');
+        console.log(symbol)
+        
+        let form = document.getElementById('form');
+        form.addEventListener('submit',(e)=>{
+          e.preventDefault();
+          checkinginput();
+        })
+        function checkinginput(){
+
+          let newinput = username.value.trim();
+          console.log(newinput)
+          if(newinput===''){
+             usererror(username,"invalid");
+             symbol.style.visibility='visible'
+
+          }
+          else if(newinput.length<5){
+               usererror(username,"your character is less than 3")
+          }
+          else{
+               usersuccess(username,"verified")
+          }
+        
+         let cpswd = confpass.value.trim();
+         if(cpswd==''){
+              cpassworderror(confpass," password is required")
+         }
+         else if(cpswd.length<5){
+               cpassworderror(confpass,"password must greater than 5 char")
+         }
+         else if(password.value.trim()!=cpswd){
+               cpassworderror(confpass,"password dont match")
+         }
+         else{
+          cpasswordsuccess(confpass,"password match")
+         }
+        
+           let mail = mailid.value.trim();
+          if(mail==''){
+               emailerror(mailid,"email is required")
+          }
+          else if(mailexp(mail)==true){
+              emailsuccess(mailid,"verified")
+          }
+          else if(mailexp(mail)==false){
+               emailerror(mailid,"email should be proper")
+          }
+          function mailexp(mail){
+         return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)
+             
+        }
+            let pswd = password.value.trim();
+            if(pswd==''){
+               passworderror(psd,"password is required")
+            }
+            else if(pswd.length<5){
+               passworderror(psd,"password is must greater then 5 char")
+            }
+            else{
+               passwordsuccess(pswd,"verified");
+            }
+          
+        
+        function passworderror(psd,msg){
+            password.className="error";
+            err[2].textContent=msg;
+        }
+        function passwordsuccess(psd,msg){
+          password.className="success";
+          err[2].textContent=msg;
+          err[2].style.color="green"
+        }
+       function emailerror(mailid,msg){
+          mailid.className="error";
+          err[1].textContent=msg;
+        }
+        function emailsuccess(mailid,msg){
+          mailid.className="success";
+          err[1].textContent=msg;
+          err[1].style.color="green"
+        }
+        
+        function usersuccess(input,msg){
+           input.className="success";
+           err[0].textContent=msg;
+           err[0].style.color="green"
+        }
+       function usererror(input,msg){
+             input.className="error";
+             err[0].textContent=msg;
+       }
+       function cpassworderror(confpass,msg){
+          confpass.className="error";
+          err[3].textContent=msg;
+         }
+         function cpasswordsuccess(confpass,msg){
+          confpass.className="success";
+          err[3].textContent=msg;
+          err[3].style.color="green"
+         }
+     }
+     </script>
+</body>
+</html>
